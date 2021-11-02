@@ -148,6 +148,7 @@ const Form = styled.div`
   width: 408px;
   @media (max-width: 768px) {
     margin-top: 20px;
+    width: 100%;
   }
 `;
 
@@ -167,6 +168,8 @@ const Google = styled.button`
   font-size: 20px;
   color: rgba(0, 0, 0, 0.6);
   &:hover {
+    background-color: rgba(207, 207, 207, 0.25);
+    color: rgba(0, 0, 0, 0.75);
   }
 `;
 
