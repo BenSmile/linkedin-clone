@@ -1,10 +1,15 @@
-import './App.css';
-
+import "./App.css";
+import Login from "./components/Login";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <h2>Let build the Linkedin clone</h2>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Login />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
