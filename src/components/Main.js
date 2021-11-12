@@ -312,6 +312,10 @@ const SocialActions = styled.div`
     border: none;
     background: white;
 
+    span{
+      margin-left: 4px;
+    }
+
     @media (min-width: 768px) {
       margin-left: 8px;
     }

@@ -92,7 +92,7 @@ const Photo = styled.div`
   background-color: white;
   background-position: center;
   background-repeat: no-repeat;
-  border: 2px solid red;
+  border: 2px solid white;
   margin: -38px auto 12px;
   border-radius: 50%;
 `;
