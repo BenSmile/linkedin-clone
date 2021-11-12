@@ -1,35 +1,48 @@
 import styled from "styled-components";
 
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { signinApi } from "../actions";
+// import { signinApi } from "../actions";
+import { Redirect } from "react-router";
+import { signIn } from "../redux/actions/userActions";
+import { useEffect } from "react";
 const Login = (props) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+
+  const signInWithGoole = () => {
+    dispatch(signIn());
+  };
+
+  useEffect(() => {
+    console.log("login page -> ", user);
+  }, [user]);
+
   return (
-    <div>
-      <Container>
-        <Nav>
-          <a href="">
-            <img src="/images/login-logo.svg" alt="" />
-          </a>
-          <div>
-            <Join>Join now</Join>
-            <Signin>Sign In</Signin>
-          </div>
-        </Nav>
-        <Section>
-          <Hero>
-            <h1>Welcome to your professional community</h1>
-            <img src="/images/login-hero.svg" alt="Login hero" />
-          </Hero>
-          <Form>
-            <Google onClick={() => props.signIn()}>
-              <img src="/images/google.svg" alt="sign in with google" />
-              Sign in with Google
-            </Google>
-          </Form>
-        </Section>
-      </Container>
-    </div>
+    <Container>
+      {user && <Redirect to="/home" />}
+      <Nav>
+        <a href="">
+          <img src="/images/login-logo.svg" alt="" />
+        </a>
+        <div>
+          <Join>Join now</Join>
+          <Signin>Sign In</Signin>
+        </div>
+      </Nav>
+      <Section>
+        <Hero>
+          <h1>Welcome to your professional community</h1>
+          <img src="/images/login-hero.svg" alt="Login hero" />
+        </Hero>
+        <Form>
+          <Google onClick={signInWithGoole}>
+            <img src="/images/google.svg" alt="sign in with google" />
+            Sign in with Google
+          </Google>
+        </Form>
+      </Section>
+    </Container>
   );
 };
 
@@ -175,12 +188,15 @@ const Google = styled.button`
   }
 `;
 
-const mapStateToProps = (state) => {
-  return {};
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     // user:state.userState.user
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => ({
-  signIn: () => dispatch(signinApi()),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   signIn: () => dispatch(signinApi()),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
+// export default connect(mapStateToProps, mapDispatchToProps)(Login);
